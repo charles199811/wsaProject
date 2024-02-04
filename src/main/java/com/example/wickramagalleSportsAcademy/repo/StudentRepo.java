@@ -1,0 +1,17 @@
+package com.example.wickramagalleSportsAcademy.repo;
+
+import com.example.wickramagalleSportsAcademy.entity.StudentEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@EnableJpaRepositories
+public interface StudentRepo extends JpaRepository<StudentEntity, Integer> {
+
+
+    Page<StudentEntity>findAllByActiveStateEquals(boolean activeState, PageRequest of);
+    int countAllByActiveStateEquals(boolean activeState);
+}
